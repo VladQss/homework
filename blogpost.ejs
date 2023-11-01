@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= post.title %></title>
+</head>
+<body>
+<h1><%= post.title %></h1>
+<p><%= post.date %></p>
+<p>
+    <% if (post.content.length > 100) { %>
+        <%= post.content.substring(0, 100) %>...
+        <button id="readMoreButton">Read more</button>
+        <span id="fullContent" style="display: none;"><%= post.content %></span>
+    <% } else { %>
+        <%= post.content %>
+    <% } %>
+</p>
+<script>
+    const readMoreButton = document.getElementById('readMoreButton');
+    const fullContent = document.getElementById('fullContent');
+
+    readMoreButton.addEventListener('click', () => {
+        readMoreButton.style.display = 'none';
+        fullContent.style.display = 'inline';
+    });
+</script>
+</body>
+</html>
